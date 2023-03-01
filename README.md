@@ -6,6 +6,10 @@ CloudCloak is a tool for red teaming operations that allows users to conduct att
 
 ![alt text](./docs/images/network.png "Network Diagram")
 
+### Video Demo
+
+![alt text](./docs/images/CloudCloak_ifconfig.gif "Network Diagram")
+
 ## Setup
 
 The Haproxy server acts as a load balancer, distributing traffic across various SOCKS5 proxy servers, and this is the server to which your workstation will connect.
