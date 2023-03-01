@@ -82,6 +82,8 @@ resource "aws_security_group" "cloudclock_group" {
   }
 }
 
+
+// This allows all traffic from any source within the same security group.
 resource "aws_security_group_rule" "allow_internal_traffic" {
   type                     = "ingress"
   from_port                = 0
