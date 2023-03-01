@@ -31,18 +31,18 @@ The Haproxy server acts as a load balancer, distributing traffic across various 
 6. Add the private IP address into haproxy.sh file:
 
    ```
-   server server0 172.31.42.223:1080
-   server server1 172.31.40.107:1080
+   server server0 <socks5_01_private_ip_address>:1080
+   server server1 <socks5_02_private_ip_address>:1080
    ```
 
 7. Execute the "haproxy.sh" script over an SSH connection:
 
    ```
-   ssh -i "proxy_key.pem" ubuntu@{haproxy_public_ip} 'bash -s' < haproxy.sh
+   ssh -i "proxy_key.pem" ubuntu@<haproxy_public_ip_address> 'bash -s' < haproxy.sh
    ```
 
 8. Verify the connection:
 
    ```
-   curl -x socks5://{haproxy_public_ip}:1080 ifconfig.me
+   curl -x socks5://<haproxy_public_ip_address>:1080 ifconfig.me
    ```
