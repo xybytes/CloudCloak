@@ -8,13 +8,13 @@ CloudCloak is a tool for red teaming operations that allows users to conduct att
 
 ## Setup
 
-The Haproxy server is the server your workstation will connect to. It functions as a load balancer, distributing traffic across different SOCKS5 proxy servers.
+The Haproxy server acts as a load balancer, distributing traffic across various SOCKS5 proxy servers, and this is the server to which your workstation will connect.
 
-1. Modify the file variable.tf with the numbers of socks5 proxy and your public IP address.
+1. Update the "variable.tf" file with the appropriate numbers of SOCKS5 proxy and your public IP address.
 
 2. Genertate a ssh keys: `ssh-keygen -t ed25519`
 
-3. Set up terraform `terraform init` and `terraform apply`.
+3. Execute `terraform init` and `terraform apply` commands to set up Terraform.
 
 4. Retrive private IP address of exit-nodes:
 
@@ -22,26 +22,26 @@ The Haproxy server is the server your workstation will connect to. It functions 
    aws ec2 describe-instances --filters "Name=tag:Name,Values=CloudCloak-proxy" --query "Reservations[].Instances[].PrivateIpAddress" --output text
    ```
 
-5. Get public IP address for the Load Balancer:
+5. Retrieve public IP address for the Load Balancer:
 
    ```
    aws ec2 describe-instances --filters "Name=tag:Name,Values=CloudCloak-haproxy" --query "Reservations[].Instances[].PublicIpAddress" --output text
    ```
 
-6. Insert private IP address in haproxy.sh:
+6. Add the private IP address into haproxy.sh file:
 
    ```
    server server0 172.31.42.223:1080
    server server1 172.31.40.107:1080
    ```
 
-7. Run haproxy.sh script trought ssh connection:
+7. Execute the "haproxy.sh" script over an SSH connection:
 
    ```
    ssh -i "proxy_key.pem" ubuntu@{haproxy_public_ip} 'bash -s' < haproxy.sh
    ```
 
-8. Test the connection:
+8. Verify the connection:
 
    ```
    curl -x socks5://{haproxy_public_ip}:1080 ifconfig.me
