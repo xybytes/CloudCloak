@@ -1,5 +1,8 @@
 # CloudCloak
 
+[![Terraform 1.3.x](https://img.shields.io/badge/Terraform-v1.3.9-green.svg)](https://www.terraform.io/)
+[![License](https://img.shields.io/badge/license-MIT-red.svg)](https://github.com/xybytes/CloudCloak/blob/main/LICENSE)
+
 CloudCloak is a tool for red teaming operations that allows users to conduct attacks such as password spraying while hiding their source IP address using AWS. It is built to provide a high level of stealth and security for penetration testing activities.
 
 ### Implementation Diagram
